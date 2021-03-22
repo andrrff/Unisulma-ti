@@ -25,7 +25,7 @@ impl Component for Pc {
     fn view(&self) -> Html {
         html! {
             <>
-                <h1>{"Ola mundo!"}</h1>
+                <h1>{"🚧Está página ainda está sendo trabalhada!🚧"}</h1>
             </>
         }
     }
