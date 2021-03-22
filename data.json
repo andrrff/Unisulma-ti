@@ -10,7 +10,9 @@
             "monitor": "Samsung",
             "tamMonitor": "15",
             "ram": "4GB",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "SECAD",
@@ -23,7 +25,9 @@
             "monitor": "Samsung",
             "tamMonitor": "15.6",
             "ram": "4GB",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "SECAD",
@@ -36,7 +40,9 @@
             "monitor": "Samsung",
             "tamMonitor": "20",
             "ram": "2GB",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "SECAD",
@@ -49,8 +55,11 @@
             "monitor": "Lenovo",
             "tamMonitor": "?",
             "ram": "2GB",
-            "status": "Ativado"
-        }, {
+            "status": "Desativado",
+            "servicos": [""],
+            "problemas": ["(19/03/2021): Ativar o Windows 7 - André Freitas"]
+        },
+        {
             "setor": "PROVAS",
             "id": "01PROVAS01D",
             "hdd": "465GB",
@@ -61,7 +70,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "4GB",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROVAS",
@@ -74,8 +85,11 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR01D",
             "hdd": "500GB (ST500DM002-1DB142)",
@@ -86,7 +100,9 @@
             "monitor": "AOC",
             "tamMonitor": "15,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -99,7 +115,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -112,20 +130,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
-        },
-        {
-            "setor": "LAB. INFO 01",
-            "id": "01LABINFOR03D",
-            "hdd": "500GB (ST500DM002-1DB142)",
-            "cpu": "I3-3240",
-            "os": "Windows 7",
-            "user": "?",
-            "marca": "LENOVO",
-            "monitor": "LENOVO",
-            "tamMonitor": "18,5",
-            "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -138,8 +145,11 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR05D",
             "hdd": "500GB (ST500DM002-1DB142)",
@@ -150,7 +160,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -163,8 +175,11 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR07D",
             "hdd": "500GB (ST500DM002-1DB142)",
@@ -175,8 +190,11 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR08D",
             "hdd": "320GB(ST332041AS)",
@@ -187,8 +205,11 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "15,5",
             "ram": "4GB(DDR4)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR09D",
             "hdd": "160GB (ST3160813AS)",
@@ -199,8 +220,11 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": ["(17/03/2021): Feito uma limpeza completa nestá máquina - André Freitas"],
+            "problemas": ["(17/03/2021): Fazer a configuração dos usuários padrão(Administrador e Acadêmico) - André Freitas"]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR10D",
             "hdd": "500GB (WD5000AAKX-08U6AA0)",
@@ -211,8 +235,11 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR11D",
             "hdd": "500GB (ST500DM002-1DB142)",
@@ -223,8 +250,11 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR12D",
             "hdd": "500GB (ST500DM002-1DB142)",
@@ -235,8 +265,11 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "LAB. INFO 01",
             "id": "01LABINFOR13D",
             "hdd": "80GB (ST380817AS)",
@@ -247,7 +280,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -260,7 +295,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -273,7 +310,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -286,7 +325,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -299,7 +340,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -312,7 +355,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -325,7 +370,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -338,7 +385,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -351,7 +400,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -364,7 +415,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "LAB. INFO 01",
@@ -377,7 +430,9 @@
             "monitor": "LENOVO",
             "tamMonitor": "18,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": ["(17/03/2021): HDD deve ser trocado, foi presenciado por alguns usuários problema de tela azul - André Freitas"]
         },
         {
             "setor": "LAB. INFO 01",
@@ -390,7 +445,9 @@
             "monitor": "AOC",
             "tamMonitor": "15,5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROTOCOLO",
@@ -403,7 +460,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "19",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROTOCOLO",
@@ -416,7 +475,9 @@
             "monitor": "Acer",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "FIESPROUNI",
@@ -429,8 +490,11 @@
             "monitor": "Philips",
             "tamMonitor": "20",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
-        }, {
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        },
+        {
             "setor": "FIESPROUNI",
             "id": "01FIESPROUNI02D",
             "hdd": "150GB",
@@ -441,7 +505,9 @@
             "monitor": "AOC",
             "tamMonitor": "20",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "RECOCRED",
@@ -454,7 +520,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "15",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "RECOCRED",
@@ -467,7 +535,9 @@
             "monitor": "LG",
             "tamMonitor": "22",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "RECOCRED",
@@ -480,7 +550,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "SECOM",
@@ -493,7 +565,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "20",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Desativado",
+            "servicos": [""],
+            "problemas": ["(22/03/2021): Ativar o Windows 7 - André Freitas"]
         },
         {
             "setor": "SECOM",
@@ -506,7 +580,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "20",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "SECOM",
@@ -519,7 +595,9 @@
             "monitor": "Acer",
             "tamMonitor": "20",
             "ram": "3GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "SECOM",
@@ -532,7 +610,9 @@
             "monitor": "LG",
             "tamMonitor": "16",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROFESSOR",
@@ -545,7 +625,9 @@
             "monitor": "AOC",
             "tamMonitor": "15.6",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROFESSOR",
@@ -558,7 +640,9 @@
             "monitor": "AOC",
             "tamMonitor": "15.6",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROFESSOR",
@@ -571,7 +655,9 @@
             "monitor": "AOC",
             "tamMonitor": "15.6",
             "ram": "?",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROFESSOR",
@@ -584,7 +670,9 @@
             "monitor": "AOC",
             "tamMonitor": "15.6",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PROFESSOR",
@@ -597,7 +685,9 @@
             "monitor": "AOC",
             "tamMonitor": "15.6",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "TI",
@@ -610,7 +700,9 @@
             "monitor": "LG (2x)",
             "tamMonitor": "22",
             "ram": "8GB(?)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "TI",
@@ -623,7 +715,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "20",
             "ram": "8GB(?)",
-            "status": "DESATIVADO"
+            "status": "DESATIVADO",
+            "servicos": [""],
+            "problemas": ["(22/03/2021): Ativar o Windows 7 - André Freitas"]
         },
         {
             "setor": "TI",
@@ -636,7 +730,9 @@
             "monitor": "SAMSUNG",
             "tamMonitor": "20",
             "ram": "8GB(?)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "AULAS",
@@ -649,7 +745,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": ["(17/03/2021): Foi observado a falta de vários parafusos na carcaça e no seu interior - André Freitas"]
         },
         {
             "setor": "AULAS",
@@ -662,7 +760,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": ["(17/03/2021): HDD destá máquina é muito enxagerado para o seu uso, recomenda-se a troca se necessário - André Freitas"]
         },
         {
             "setor": "AULAS",
@@ -675,7 +775,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "AULAS",
@@ -688,7 +790,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "AULAS",
@@ -701,7 +805,11 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": ["(17/03/2021): FOI FEITO TESTES NESTA MÁQUINA E NÃO GERAVA IMAGEM, FOI FEITO TODOS OS TESTES E CONSTATOU-SE QUE O PROBLEMA ESTAVA NA MEM. RAM DE 2GB DE 1600MHZ DDR3, JÁ FOI FEITO A TROCA POR OUTRA MEM. RAM DA SALA DE T.I. - André Freitas"],
+            "problemas": ["(17/03/2021): Carcaça frontal danificada, os danos se encontram no slot pra DVD/CD - André Freitas",
+                "(17/03/2021): Não gera imagem - André Freitas"
+            ]
         },
         {
             "setor": "AULAS",
@@ -714,7 +822,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "AULAS",
@@ -727,7 +837,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "AULAS",
@@ -740,7 +852,9 @@
             "monitor": "?",
             "tamMonitor": "?",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "RECEPÇÃO DA COODERNAÇÃO",
@@ -753,7 +867,9 @@
             "monitor": "Lenovo LS1920wG",
             "tamMonitor": "18.5",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "RECEPÇÃO DA COODERNAÇÃO",
@@ -766,7 +882,9 @@
             "monitor": "Samsung B3030N",
             "tamMonitor": "18.5",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "RECEPÇÃO DA COODERNAÇÃO",
@@ -779,7 +897,9 @@
             "monitor": "LG W22438EV",
             "tamMonitor": "22",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "FISIOTERAPIA",
@@ -792,7 +912,9 @@
             "monitor": "AOC E2050SWN",
             "tamMonitor": "19.5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "DIREITO",
@@ -805,7 +927,9 @@
             "monitor": "LG",
             "tamMonitor": "19",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "ESTÉTICA E COSMÉTICA",
@@ -818,7 +942,9 @@
             "monitor": "LG 20EN33",
             "tamMonitor": "19.5",
             "ram": "3GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "PSICOLOGIA",
@@ -831,7 +957,9 @@
             "monitor": "AOC E2050SWN",
             "tamMonitor": "19.5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "ENFERMAGEM",
@@ -844,7 +972,9 @@
             "monitor": "ACER K202HQL",
             "tamMonitor": "19.5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "ENFERMAGEM",
@@ -857,7 +987,9 @@
             "monitor": "SAMSUNG B2030N",
             "tamMonitor": "19.5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "ADMINISTRAÇÃO",
@@ -870,7 +1002,9 @@
             "monitor": "SAMSUNG S19C301F",
             "tamMonitor": "18.5",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "NUTRIÇÃO",
@@ -883,7 +1017,9 @@
             "monitor": "AOC E250SWN",
             "tamMonitor": "19.5",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "EDUCAÇÃO FISICA",
@@ -896,7 +1032,9 @@
             "monitor": "AOC E250SWN",
             "tamMonitor": "20",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "SERVIÇO SOCIAL",
@@ -909,7 +1047,9 @@
             "monitor": "AOC E970SWM",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Desativado"
+            "status": "Desativado",
+            "servicos": [""],
+            "problemas": ["(19/03/2021): DANDO TELA AZUL (SOLUÇÃO TROCA DE HD/ FORMATAÇÃO COM BACKUP) - André Freitas", "(22/03/2021): Ativar o Windows 7 - André Freitas"]
         },
         {
             "setor": "SALA DE REUNIÃO",
@@ -922,7 +1062,9 @@
             "monitor": "AOC 1619Swa",
             "tamMonitor": "15.6",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "DEPARTAMENTO DE COMPRAS",
@@ -935,7 +1077,25 @@
             "monitor": "ACER K202HQL",
             "tamMonitor": "19.5",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
+        }, {
+            "setor": "DEPARTAMENTO DE COMPRAS",
+            "id": "01DEPCOMPRA02D",
+            "hdd": "?",
+            "cpu": "?",
+            "os": "Windows 7 x86",
+            "user": "ROBERTA",
+            "marca": "?",
+            "monitor": "?",
+            "tamMonitor": "?",
+            "ram": "?",
+            "status": "?",
+            "servicos": ["(20/02/2021): Limpeza rápida do computador(Foi aberto e limpado) - André Freitas", "(20/02/2021): Foi Feito a troca de duas mem. ram de 2GB(ddr3) cada por uma só - André Freitas", "(20/03/2021): Fomatação sem backup do HDD com o Windows 7 x86 - Estagiário Marcos Paulo",
+                "(22/03/2021): Foi feito a realocação da máquina no local de onde foi retirado - André Freitas e Calleu Arruda"
+            ],
+            "problemas": ["(20/03/2021): Não gerava imagem - André Freitas", "(20/03/2021): Sistema danificado(Teclado não estava sendo lido entre outros) - André Freitas", "(22/03/2021): Atualizar as informações desta máquina - André Freitas"]
         },
         {
             "setor": "DEPARTAMENTO DE PESSOAL",
@@ -948,7 +1108,9 @@
             "monitor": "SAMSUNG B2030N",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "DEPARTAMENTO DE PESSOAL",
@@ -961,7 +1123,9 @@
             "monitor": "SAMSUNG B2030N",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "DEPARTAMENTO DE PESSOAL",
@@ -974,7 +1138,9 @@
             "monitor": "AOC 1619Swa",
             "tamMonitor": "15.6",
             "ram": "?",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "FINANCEIRO A PAGAR",
@@ -987,7 +1153,9 @@
             "monitor": "SAMSUNG B2030N",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": ["(19/03/2021): Entrada USB com problemas - André Freitas", "(19/03/2021): Rodinha quebrada - André Freitas"]
         },
         {
             "setor": "FINANCEIRO A PAGAR",
@@ -1000,7 +1168,9 @@
             "monitor": "SAMSUNG B2030N",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "DIRETORIA ADMINIST/FINANCEIRA",
@@ -1013,7 +1183,9 @@
             "monitor": "ACER K202HQL",
             "tamMonitor": "20",
             "ram": "4GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": [""],
+            "problemas": [""]
         },
         {
             "setor": "ASSISTÊNCIA ADMINIST/FINANCEIRA",
@@ -1026,7 +1198,9 @@
             "monitor": "LG 20EN33",
             "tamMonitor": "19.5",
             "ram": "2GB(DDR3)",
-            "status": "Ativado"
+            "status": "Ativado",
+            "servicos": ["(20/03/2021): Feito a configuração da impressora colorida da sala do RH - Calleu Arruda"],
+            "problemas": ["(20/03/2021): Problema com a conexão da impressora colorida do RH com está máquina - André Freitas"]
         }
     ]
 }
