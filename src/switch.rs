@@ -10,6 +10,8 @@ pub enum AppRoute {
     Pc(String),
     #[to = "/page-not-found"]
     PageNotFound(Permissive<String>),
+    #[to = "/!"]
+    Home
 }
 impl AppRoute {
     pub fn into_public(self) -> PublicUrlSwitch {
