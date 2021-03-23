@@ -6,8 +6,8 @@ use yew_router::{components::RouterAnchor, prelude::*, switch::Permissive};
 
 #[derive(Clone, Debug, Switch)]
 pub enum AppRoute {
-    #[to = "/?id={id}"]
-    Pc(String),
+    #[to = "/Xcv{id}z21zx6c5v4z5c6v3z5x46ca5e4r63v2zxc1zzxc2z1x63d54QWE1V3A2DCV1Z3XC54a6s5d4zvxc321v6es5f4ds163dg5a4d6gqwe968r7cvz1c3x2v{number}"]
+    Pc(String, String),
     #[to = "/page-not-found"]
     PageNotFound(Permissive<String>),
     #[to = "/!"]
