@@ -90,7 +90,7 @@ impl Home {
                             count += 1;
                             user.push(pc.data[i].user.clone());
                             cards.push(html!{
-                                <AppAnchor route=AppRoute::Pc(pc.data[i].id.clone())>
+                                <AppAnchor route=AppRoute::Pc(pc.data[i].id.clone(), i.to_string())>
                                     <li style="background: white; min-width: 500px;min-height: 350px;  
                                             border: none;
                                             margin: 30px;
@@ -166,9 +166,17 @@ impl Home {
                                                                     white-space: nowrap;
                                                                     background-color: #E4EBF5;">
                                 <strong style="color: #6D5DFC; font-weight: 790;">{"alpha"}</strong></span>
+                                // <div class="icon" style="padding-left: 10px">
+                                // // <div class="icon__home">
+                                // //     <ion-icon name="home"></ion-icon></div>
+                                // // <div class="icon__account">
+                                // //     <ion-icon name="person"></ion-icon></div>
+                                // <div class="icon__settings">
+                                //     <img src="https://img.icons8.com/material-sharp/24/000000/settings.png" style="margin: 35px;"/></div>
+                                // </div>
                             </div>
                         </div>
-                        <div class="radio">
+                        <div class="radio" style="padding-top: 20px">
                             <div class="radio__1">
                                 <h1 style="font-family: 'Oswald', sans-serif;
                                         color: #243D67;
@@ -190,7 +198,7 @@ impl Home {
                         <ol class="gradient-list con-cards" style="margin-right: 30px;">
                             {for cards.clone()}
                         </ol>
-                        <div class="level-item" style="padding-top: 100px">
+                        <div class="level-item" style="padding-top: 100px; padding-bottom: 40px">
                             <h1 style="font-family: 'Oswald', sans-serif;
                                         color: #383741;
                                         font-size: 100%;
@@ -208,8 +216,13 @@ impl Home {
                         )
                         ">
                         <img src="https://img.icons8.com/metro/26/000000/error.png"/>{"Reportar"}
-                        </a>  </h1>
-                        </div>              
+                        </a>  {" | "}</h1>
+                        <h1 style="font-family: 'Oswald', sans-serif;
+                                        color: #383741;
+                                        font-size: 100%;
+                                        font-weight: 700;">
+                                <a href="https://github.com/andrrff"><img src="https://img.icons8.com/material-sharp/24/000000/github.png"/>{" andrrff GitHub"}</a></h1>
+                        </div>             
                     </>
                 }
             }
