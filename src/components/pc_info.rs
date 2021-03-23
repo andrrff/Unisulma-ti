@@ -38,50 +38,34 @@ impl Component for Pc {
     fn view(&self) -> Html {
         html! {
             <>
-                <ol class="gradient-list" style="margin-left: 30px; margin-right: 30px;">
-                <li style="background: white; min-width: auto;  
-                                        border: none;
-                                        border-radius: 1rem;
-                                        font-size: 1.4rem;
-                                        padding-left: 3.8rem;
-                                        box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
-                                        background: none;
-                                        font-family: inherit;
-                                        color: #9baacf;">
-                                <strong><h2 class="text_config" style="font-size: 150%;font-weight: 1000; padding-bottom: 20px; color: #6d5dfc">
-                                    {self.props.user.clone()}{":"}
-                                </h2></strong>
-                                <strong><h2 class="text_config">
-                                    {"Setor: "}{self.props.setor.clone()}
-                                </h2></strong>
-                                <strong><h2 class="text_config">
+                <ol class="gradient-list" style="margin-left: 30px; margin-right: 30px; margin-top: 100px;">
+                                <strong><h2 class="text_config_01">
                                     {"Computer ID: "}{self.props.id.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"HDD: "}{self.props.hdd.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"CPU: "}{self.props.cpu.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"OS: "}{self.props.os.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"Marca da Máquina: "}{self.props.marca.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"Monitor: "}{self.props.monitor.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"Tamanho do monitor: "}{self.props.monitor.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"Mem. Ram: "}{self.props.ram.clone()}
                                 </h2></strong>
-                                <strong><h2 class="text_config">
+                                <strong><h2 class="text_config_01">
                                     {"Status do Sistema: "}{self.props.status.clone()}
                                 </h2></strong>
-                            </li>
                 </ol>
             </>
         }
