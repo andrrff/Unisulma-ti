@@ -57,8 +57,8 @@ fn main() {
 impl Unisulma{
     fn switch(switch: PublicUrlSwitch) -> Html {
         match switch.route() {
-            AppRoute::Pc(id) => {
-                html! { <Pc /> }
+            AppRoute::Pc(id, number) => {
+                html! { <Pc id=number /> }
             }
             AppRoute::PageNotFound(Permissive(route)) => {
                 html! { <PageNotFound route=route /> }
