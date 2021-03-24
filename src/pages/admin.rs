@@ -421,7 +421,7 @@ impl Component for Admin {
                     </div>
                 </div>
                 <div class="level-item" style="padding-top: 100px; padding-bottom: 40px">
-                        <img src="https://img.icons8.com/material-sharp/24/000000/github.png"/><h1 style="font-family: 'Oswald', sans-serif;
+                        <img src="https://img.icons8.com/material-sharp/24/000000/github.png" style="max-width: 24px;"/><h1 style="font-family: 'Oswald', sans-serif;
                                         color: #383741;
                                         font-size: 100%;
                                         font-weight: 700;">
