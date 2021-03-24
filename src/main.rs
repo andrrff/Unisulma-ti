@@ -12,8 +12,11 @@ use switch::{AppAnchor, AppRoute, AppRouter, PublicUrlSwitch};
 
 mod components;
 
+mod js;
+use js::caller;
+
 mod pages;
-use pages::{page_not_found::PageNotFound, pc::Pc, home::Home};
+use pages::{page_not_found::PageNotFound, pc::Pc, home::Home, admin::Admin};
 
 pub struct Unisulma;
 impl Component for Unisulma {
@@ -59,6 +62,9 @@ impl Unisulma{
         match switch.route() {
             AppRoute::Pc(id, number) => {
                 html! { <Pc id=number /> }
+            }
+            AppRoute::Admin(id) => {
+                html! { <Admin id=id /> }
             }
             AppRoute::PageNotFound(Permissive(route)) => {
                 html! { <PageNotFound route=route /> }
