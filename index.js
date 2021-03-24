@@ -79,3 +79,32 @@ export function writeUserDataStatus(userId, status) {
     });
     console.log("Write In Database - STATUS✅");
 }
+
+export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMonitor, ram, status, servicos, problemas) {
+    // A post entry.
+    var postData = {
+        setor: setor,
+        id: id,
+        hdd: hdd,
+        cpu: cpu,
+        os: os,
+        user: user,
+        marca: marca,
+        monitor: monitor,
+        tamMonitor: tamMonitor,
+        ram: ram,
+        status: status,
+        problemas: problemas,
+        servicos: servicos
+    };
+
+    // Get a key for a new Post.
+    var newPostKey = firebase.database().ref().child('data').push().key;
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates['/data/' + newPostKey] = postData;
+    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+    return firebase.database().ref().update(updates);
+}
