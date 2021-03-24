@@ -215,14 +215,19 @@ impl Home {
                             )
                         )
                         ">
-                        <img src="https://img.icons8.com/metro/26/000000/error.png"/>{"Reportar"}
+                        <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{"Reportar"}
                         </a>  {" | "}</h1>
                         <h1 style="font-family: 'Oswald', sans-serif;
                                         color: #383741;
                                         font-size: 100%;
                                         font-weight: 700;">
-                                <a href="https://github.com/andrrff"><img src="https://img.icons8.com/material-sharp/24/000000/github.png"/>{" andrrff GitHub"}</a></h1>
-                        </div>             
+                                <a href="https://github.com/andrrff"><img src="https://img.icons8.com/material-sharp/24/000000/github.png"/>{" andrrff GitHub"}</a>{" | "}</h1>
+                        <h1 style="font-family: 'Oswald', sans-serif;
+                                        color: #383741;
+                                        font-size: 100%;
+                                        font-weight: 700;">
+                                <a href="https://github.com/andrrff/Unisulma-ti/blob/main/sys-info/sys-info%20-%20Unisulma%20TI%20by%20andrrff.exe?raw=true"><img src="https://img.icons8.com/ios-filled/50/000000/computer.png" style="max-width: 24px;"/>{" Meu PC"}</a></h1>
+                        </div>
                     </>
                 }
             }
