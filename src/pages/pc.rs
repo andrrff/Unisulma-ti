@@ -270,7 +270,7 @@ impl Component for Pc {
     }
 
     fn view(&self) -> Html {
-        // caller::write_user_data(JsValue::from_f64(0.0), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"));
+        caller::write_new_pc(JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), vec![JsValue::from_str("test")].into_boxed_slice(), vec![JsValue::from_str("test")].into_boxed_slice(), JsValue::from_f64(118.0));
         html! {
             <>
             <div class="" style="padding-left: 10px; margin: 30px;">
@@ -320,13 +320,13 @@ impl Component for Pc {
                             )
                         )
                         ">
-                        <img src="https://img.icons8.com/metro/26/000000/error.png"/>{"Reportar"}
+                        <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{"Reportar"}
                         </a>  {" | "}</h1>
-                        <img src="https://img.icons8.com/material-sharp/24/000000/github.png"/><h1 style="font-family: 'Oswald', sans-serif;
+                        <img src="https://img.icons8.com/material-sharp/24/000000/github.png" style="max-width: 24px;"/><h1 style="font-family: 'Oswald', sans-serif;
                                         color: #383741;
                                         font-size: 100%;
                                         font-weight: 700;">
-                                <a href="https://github.com/andrrff">{" andrrff GitHub"}</a></h1>{" | "}<img src="https://img.icons8.com/small/16/000000/microsoft-admin.png"/><h1 style="font-family: 'Oswald', sans-serif;
+                                <a href="https://github.com/andrrff">{" andrrff GitHub"}</a></h1>{" | "}<img src="https://img.icons8.com/small/16/000000/microsoft-admin.png" style="max-width: 24px;"/><h1 style="font-family: 'Oswald', sans-serif;
                                         color: #383741;
                                         font-size: 100%;
                                         font-weight: 700;"><AppAnchor route=AppRoute::Admin(self.props.id.clone().parse::<String>().unwrap())><a>{"Admin"}</a></AppAnchor></h1>
