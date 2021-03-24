@@ -6,10 +6,12 @@ use yew::{
     prelude::*,
     services::fetch::{FetchService, FetchTask, Request, Response},
 };
+use wasm_bindgen::{JsValue, prelude::*};
 
 use crate::{
     switch::{AppAnchor, AppRoute},
-    components::pc_info
+    components::pc_info,
+    js::caller
 };
 
 #[derive(Deserialize, Debug, Clone)]
@@ -268,6 +270,7 @@ impl Component for Pc {
     }
 
     fn view(&self) -> Html {
+        // caller::write_user_data(JsValue::from_f64(0.0), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"));
         html! {
             <>
             <div class="" style="padding-left: 10px; margin: 30px;">
@@ -323,7 +326,11 @@ impl Component for Pc {
                                         color: #383741;
                                         font-size: 100%;
                                         font-weight: 700;">
-                                <a href="https://github.com/andrrff">{" andrrff GitHub"}</a></h1>
+                                <a href="https://github.com/andrrff">{" andrrff GitHub"}</a></h1>{" | "}<img src="https://img.icons8.com/small/16/000000/microsoft-admin.png"/><h1 style="font-family: 'Oswald', sans-serif;
+                                        color: #383741;
+                                        font-size: 100%;
+                                        font-weight: 700;"><AppAnchor route=AppRoute::Admin(self.props.id.clone().parse::<String>().unwrap())><a>{"Admin"}</a></AppAnchor></h1>
+                                
                         </div>   
             </>
         }
