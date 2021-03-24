@@ -80,7 +80,7 @@ export function writeUserDataStatus(userId, status) {
     console.log("Write In Database - STATUS✅");
 }
 
-export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMonitor, ram, status, servicos, problemas) {
+export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMonitor, ram, status, servicos, problemas, new_push) {
     // A post entry.
     var postData = {
         setor: setor,
@@ -99,12 +99,14 @@ export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMon
     };
 
     // Get a key for a new Post.
-    var newPostKey = firebase.database().ref().child('data').push().key;
+    // var newPostKey = firebase.database().ref().child('data').push().len;
+    // console.log(newPostKey);
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
     var updates = {};
-    updates['/data/' + newPostKey] = postData;
+    updates['/data/' + new_push] = postData;
     // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+    console.log("Write In Database - NEW POST✅");
 
     return firebase.database().ref().update(updates);
 }
