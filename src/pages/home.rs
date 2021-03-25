@@ -6,8 +6,11 @@ use yew::{
     services::fetch::{FetchService, FetchTask, Request, Response},
 };
 
+use wasm_bindgen::{JsValue, prelude::*};
+
 use crate::{
     switch::{AppAnchor, AppRoute},
+    js::caller
 };
 
 #[derive(Deserialize, Debug, Clone)]
@@ -34,6 +37,7 @@ pub struct Data {
 pub enum Msg {
     GetInfo,
     ChangeSearchOption(bool),
+    Button(f64),
     ReceiveResponse(Result<Data, anyhow::Error>),
     Payload(String),
 }
@@ -139,6 +143,8 @@ impl Home {
                             })
                         }
                    }
+                   let number = pc.data.clone().len();
+                //    number = number as f64;
                 html! {
                     <>
                         <div class="level-item" style="padding-top: 80px;">
@@ -150,22 +156,26 @@ impl Home {
                                 <div class="search__icon">
                                     <span class="icon"><i aria-hidden="true" class="fa fa-search"></i></span>
                                 </div>
-                                <span class="tag is-danger" style="margin: 5px; align-items: center;
-                                                                    background-color: #f5f5f5;
-                                                                    border-radius: 5px 18px 18px 5px;
-                                                                    box-shadow: 0.2rem 0.2rem 0.5rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-                                                                    color: #4a4a4a;
-                                                                    display: inline-flex;
-                                                                    /* left: -10px; */
-                                                                    font-size: .75rem;
-                                                                    height: 5.1em;
-                                                                    justify-content: center;
-                                                                    line-height: 1.5;
-                                                                    padding-left: .75em;
-                                                                    padding-right: .75em;
-                                                                    white-space: nowrap;
-                                                                    background-color: #E4EBF5;">
-                                <strong style="color: #6D5DFC; font-weight: 790;">{"alpha"}</strong></span>
+                                <a onclick=self.link.callback(move |_| Msg::Button(number as f64))>
+                                    // <AppAnchor route=AppRoute::AdminCreate(pc.data.len().to_string())>
+                                    <span class="tag is-danger" style="margin: 5px; align-items: center;
+                                                                        background-color: #f5f5f5;
+                                                                        border-radius: 5px 18px 18px 5px;
+                                                                        box-shadow: 0.2rem 0.2rem 0.5rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                                        color: #4a4a4a;
+                                                                        display: inline-flex;
+                                                                        /* left: -10px; */
+                                                                        font-size: .75rem;
+                                                                        height: 5.1em;
+                                                                        justify-content: center;
+                                                                        line-height: 1.5;
+                                                                        padding-left: .75em;
+                                                                        padding-right: .75em;
+                                                                        white-space: nowrap;
+                                                                        background-color: #E4EBF5;">
+                                    <strong style="color: #6D5DFC; font-weight: 790; font-size: 400%;">{"+"}</strong></span>
+                                    // </AppAnchor>
+                                </a>
                                 // <div class="icon" style="padding-left: 10px">
                                 // // <div class="icon__home">
                                 // //     <ion-icon name="home"></ion-icon></div>
@@ -247,9 +257,21 @@ impl Home {
             }
         }
     }
+    fn export_array_data(&self) -> f64
+    {
+        match self.pc {
+            Some(ref pc) => {
+                self.pc.as_ref().unwrap().data.clone().len() as f64
+            }
+            None => 
+            {
+                0.0
+            }
+        }
+    }
     fn view_fetching(&self) -> Html {
         if self.fetch_task.is_some() {
-            html! { <p>{ "Carregando dados..." }</p> }
+            html! {}
         } else {
             html! { <p></p> }
         }
@@ -274,7 +296,7 @@ impl Component for Home {
             option: true,
             option01: true,
             option02: false,
-            debugged_payload: format!("{}", "none"),
+            debugged_payload: format!("{}", "Como se chamar?"),
             fetch_task: None,
             pc: None,
             link,
@@ -288,6 +310,16 @@ impl Component for Home {
         use Msg::*;
 
         match msg {
+            Button(number) => {
+                caller::write_new_pc(JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), vec![JsValue::from_str("?")].into_boxed_slice(), vec![JsValue::from_str("?")].into_boxed_slice(), JsValue::from_f64(number));
+                // caller::write_new_pc(JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), vec![JsValue::from_str("test")].into_boxed_slice(), vec![JsValue::from_str("test")].into_boxed_slice(), JsValue::from_f64(number));
+                let word = self.debugged_payload.clone();
+                let callback = self.link.callback(move |_msg: Msg| Msg::Payload(word.clone()));
+                callback.emit(Msg::Payload(self.debugged_payload.clone()));
+                let callback = self.link.callback(|_msg: Msg| Msg::GetInfo);
+                callback.emit(Msg::GetInfo);
+                true
+            }
             ChangeSearchOption(boolean) => {
                 self.option = boolean;
                 if boolean
@@ -303,15 +335,18 @@ impl Component for Home {
                 true
             }
             Payload(payload) => {
+                // let callback = self.link.callback(|_msg: Msg| Msg::GetInfo);
+                // callback.emit(Msg::GetInfo);
                 if payload != self.payload {
                     self.debugged_payload = format!("{}", payload);
                     if self.debugged_payload == ""
                     {
-                        self.debugged_payload = format!("{}", "none");
+                        self.debugged_payload = format!("{}", "Como se chamar?");
                     }
                     self.payload = payload;
                     true
                 } else {
+                    self.payload = payload;
                     false
                 }
             }
