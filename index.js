@@ -110,3 +110,34 @@ export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMon
 
     return firebase.database().ref().update(updates);
 }
+
+export function removeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMonitor, ram, status, servicos, problemas, new_push) {
+    // A post entry.
+    var postData = {
+        setor: setor,
+        id: id,
+        hdd: hdd,
+        cpu: cpu,
+        os: os,
+        user: user,
+        marca: marca,
+        monitor: monitor,
+        tamMonitor: tamMonitor,
+        ram: ram,
+        status: status,
+        problemas: problemas,
+        servicos: servicos
+    };
+
+    // Get a key for a new Post.
+    // var newPostKey = firebase.database().ref().child('data').push().len;
+    // console.log(newPostKey);
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+    var updates = {};
+    updates['data/' + new_push] = postData;
+    // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+    console.log("Write In Database - REMOVE POST✅");
+
+    return firebase.database().ref().set(updates);
+}
