@@ -34,7 +34,11 @@ pub struct Data {
 #[derive(Debug)]
 pub enum Msg {
     GetInfo,
-    Submit,
+    Submit(u8),
+    AddProblema(usize),
+    AddServico(usize),
+    CurrentProblema(usize),
+    CurrentServico(usize),
     Payload(u8, String),
     ReceiveResponse(Result<Data, anyhow::Error>),
 }
@@ -47,6 +51,12 @@ pub struct Props {
 pub struct Admin{
     props: Props,
     view: Html,
+    current_problema: usize,
+    current_servico: usize,
+    add_problema: Vec<String>,
+    add_servico: Vec<String>,
+    add_problema_struct: Vec<Html>,
+    add_servico_struct: Vec<Html>,
     allow_modify: bool,
     debug_password: String,
     debug_setor: String,
@@ -60,8 +70,8 @@ pub struct Admin{
     debug_tamMonitor: String,
     debug_ram: String,
     debug_status: String,
-    debug_problemas: Vec<String>,
-    debug_servicos: Vec<String>,
+    debug_problemas: String,
+    debug_servicos: String,
     fetch_task: Option<FetchTask>,
     pc: Option<Data>,
     link: ComponentLink<Self>,
@@ -74,6 +84,65 @@ impl Admin
         let mut info: Html = html!{};
         match self.pc {
             Some(ref pc) => {
+                let problemas = pc.problemas.clone();
+                let servicos = pc.servicos.clone();
+                let mut elements_problemas: Vec<Html> = vec![html!{}];
+                let mut elements_servicos: Vec<Html> = vec![html!{}];
+                if pc.problemas.len().clone() > 1
+                {
+                    let mut words: Vec<String> = Vec::new();
+                    // let problemas = pc.problemas.clone();
+                    // let servicos = pc.servicos.clone();
+                    // let mut elements_problemas: Vec<Html> = Vec::new();
+                    for (e, i) in pc.problemas.iter().enumerate()
+                    {
+                        let mut name_problemas_data: Vec<char> = Vec::new();
+                        let letters = i.to_string().chars().collect::<Vec<char>>();
+                        for (j, l) in letters.iter().enumerate()
+                        {
+                            if j <= 11
+                            {
+                                name_problemas_data.push(*l);
+                            }
+                            else
+                            {
+                                words.push(name_problemas_data.iter().collect::<String>().clone());
+                                break;
+                            }
+                        }
+                        elements_problemas.push(html!{
+                                        <label>
+                                            <input onclick=self.link.callback(move |_| Msg::CurrentProblema(e)) type="radio" name="radio" checked=false/>
+                                            <span>{words[e].clone()}</span>
+                                        </label>
+                                    });
+                    }
+                    let mut words: Vec<String> = Vec::new();
+                    let mut elements_servicos: Vec<Html> = Vec::new();
+                    for (e, i) in pc.servicos.iter().enumerate()
+                    {
+                        let mut name_servicos_data: Vec<char> = Vec::new();
+                        let letters = i.to_string().chars().collect::<Vec<char>>();
+                        for (j, l) in letters.iter().enumerate()
+                        {
+                            if j <= 11
+                            {
+                                name_servicos_data.push(*l);
+                            }
+                            else
+                            {
+                                words.push(name_servicos_data.iter().collect::<String>().clone());
+                                break;
+                            }
+                        }
+                        elements_servicos.push(html!{
+                                        <label>
+                                            <input onclick=self.link.callback(move |_| Msg::CurrentServico(e)) type="radio" name="radio" checked=false/>
+                                            <span>{words[e].clone()}</span>
+                                        </label>
+                                    });
+                    }
+                }
                 if self.allow_modify == true
                 {
                     info = html!{
@@ -216,6 +285,20 @@ impl Admin
                                                                                                                                                     outline: none;
                                                                                                                                                 }" oninput=self.link.callback(|input: InputData| Msg::Payload(10, input.value))/>
                                     </div>
+                                        <fieldset>
+                                            <legend>{"Problemas"}</legend>
+                                            <details open=false>
+                                                <summary>{"Escolha um para editar..."}<span class="material-icons-round"><img src="https://img.icons8.com/material-rounded/24/000000/down-squared.png"/></span></summary>
+                                                <div>
+                                                    {for elements_problemas.clone()}
+                                                    {for self.add_problema_struct.clone()}
+                                                    <label>
+                                                        <input type="radio" name="radio" checked=true/> //onclick=self.link.callback(move |_| Msg::AddProblema(problemas.clone().len()))
+                                                        <span><img src="https://img.icons8.com/metro/26/000000/plus-2-math.png" style="width: 24px"/>{" Adicionar um problema - in build🚧"}</span>
+                                                    </label>
+                                                </div>
+                                            </details>
+                                        </fieldset>
                                     <div class="input-holder">
                                     <textarea class="validate" style="border: 2px solid #ccc;
                                                                     border-radius: 4px;
@@ -226,9 +309,24 @@ impl Admin
                                                                     &:focus {
                                                                         border: 2px solid #999;
                                                                         outline: none;
-                                                                    }">{format!("Problemas: {:?}", pc.problemas.clone())}</textarea>
+                                                                    }" placeholder="(??/??/????): Escreva aqui o problema - Seu nome" oninput=self.link.callback(|input: InputData| Msg::Payload(11, input.value))>{pc.problemas[self.current_problema].clone()}</textarea>
+                                                                    <button class="submit-confirm" onclick=self.link.callback(|_| Msg::Submit(1)) style="margin-top: 15px; margin-bottom: 100px;">{"Confimar"}</button>
                                     <span class="message">{"Ok. I'll go first. I'm a big fan of the New York Giants. You?"}</span>
                                     </div>
+                                    <fieldset>
+                                            <legend>{"Serviços"}</legend>
+                                            <details open=false>
+                                                <summary>{"Escolha um para editar..."}<span class="material-icons-round"><img src="https://img.icons8.com/material-rounded/24/000000/down-squared.png"/></span></summary>
+                                                <div>
+                                                    {for elements_servicos.clone()}
+                                                    {for self.add_servico_struct.clone()}
+                                                    <label>
+                                                        <input type="radio" name="radio" checked=true/> //onclick=self.link.callback(move |_| Msg::AddServico(servicos.clone().len()))
+                                                        <span><img src="https://img.icons8.com/metro/26/000000/plus-2-math.png" style="width: 24px"/>{" Adicionar um serviço - in build🚧"}</span>
+                                                    </label>
+                                                </div>
+                                            </details>
+                                        </fieldset>
                                     <div class="input-holder">
                                     <textarea style="border: 2px solid #ccc;
                                                     border-radius: 4px;
@@ -239,11 +337,12 @@ impl Admin
                                                     &:focus {
                                                         border: 2px solid #999;
                                                         outline: none;
-                                                    }">{format!("Serviços: {:?}", pc.servicos.clone())}</textarea>
+                                                    }" placeholder="(??/??/????): Escreva aqui o serviços - Seu nome" oninput=self.link.callback(|input: InputData| Msg::Payload(12, input.value))>{pc.servicos[self.current_servico].clone()}</textarea>
+                                                    <button class="submit-confirm" onclick=self.link.callback(|_| Msg::Submit(2)) style="margin-top: 15px; margin-bottom: 100px;">{"Confimar"}</button>
                                     </div>
                                 </div>
                                 <button class="submit">{"Reload"}</button>
-                                <button class="submit-delete" onclick=self.link.callback(|_| Msg::Submit) style="padding-top: 5px">{"🚧Deletar🚧"}</button>
+                                <button class="submit-delete" onclick=self.link.callback(|_| Msg::Submit(0)) style="margin-top: 15px;">{"Deletar"}</button>
                             </form>
                     }
                 };
@@ -282,6 +381,28 @@ impl Admin
             }
         }
     }
+    fn export_problemas(&self) -> Vec<String>
+    {
+        match self.pc {
+            Some(ref pc) => {
+                pc.problemas.clone()
+            }
+            None => {
+                vec!["Carregando".to_string()]
+            }
+        }
+    }
+    fn export_servicos(&self) -> Vec<String>
+    {
+        match self.pc {
+            Some(ref pc) => {
+                pc.servicos.clone()
+            }
+            None => {
+                vec!["Carregando".to_string()]
+            }
+        }
+    }
     fn export_setor(&self) -> String
     {
         match self.pc {
@@ -293,16 +414,6 @@ impl Admin
             }
         }
     }
-    // fn view_html(&self) -> String {
-    //     match self.pc {
-    //         Some(ref pc) => {
-    //             self.pc.
-    //         }
-    //         None => {
-    //             String::default()
-    //         }
-    //     }
-    // }
     fn view_fetching(&self) -> Html {
         if self.fetch_task.is_some() {
             html! { <p>{ "Carregando dados..." }</p> }
@@ -326,10 +437,18 @@ impl Component for Admin {
     fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
         let callback = link.callback(|_msg: Msg| Msg::GetInfo);
         callback.emit(Msg::GetInfo);
+        // let callback = link.callback(|_msg: Msg| Msg::GetInfo);
+        // callback.emit(Msg::GetInfo);
         Self{
             props,
             view: html!{},
             allow_modify: false,
+            current_problema: 0usize,
+            current_servico: 0usize,
+            add_problema: Vec::new(),
+            add_servico: Vec::new(),
+            add_problema_struct: Vec::new(),
+            add_servico_struct: Vec::new(),
             debug_password: String::default(),
             debug_setor: String::default(),
             debug_id: String::default(),
@@ -342,8 +461,8 @@ impl Component for Admin {
             debug_tamMonitor: String::default(),
             debug_ram: String::default(),
             debug_status: String::default(),
-            debug_problemas: Vec::new(),
-            debug_servicos: Vec::new(),
+            debug_problemas: String::default(),
+            debug_servicos: String::default(),
             fetch_task: None,
             pc: None,
             link,
@@ -355,6 +474,80 @@ impl Component for Admin {
         use Msg::*;
 
         match msg {
+        AddProblema(value) =>
+        {
+            // self.add_problema = self.export_problemas();
+            let mut name_problemas_data: Vec<char> = Vec::new();
+            self.add_problema.push(String::from("(??/??/????): Escreva aqui o problema - Seu nome"));
+            self.current_problema = self.add_problema.len().clone();
+            let mut elements_problemas: Vec<Html> = Vec::new();
+            for (_, i) in self.add_problema.clone().iter().enumerate()
+            {
+                let letters = i.to_string().chars().collect::<Vec<char>>();
+                for (j, l) in letters.iter().enumerate()
+                {
+                    if j <= 11
+                    {
+                        name_problemas_data.push(*l);
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                let number = self.current_problema.clone();
+                elements_problemas.push(html!{
+                                <label>
+                                    <input onclick=self.link.callback(move |_| Msg::CurrentProblema(number)) type="radio" name="radio" checked=true/>
+                                    <span>{"(??/??/????)"}</span>
+                                </label>
+                            });
+            }
+            self.add_problema_struct = elements_problemas;
+            true
+        }
+        AddServico(value) =>
+        {
+            let mut name_servicos_data: Vec<char> = Vec::new();
+            let mut words: Vec<String> = Vec::new();
+            self.add_servico.push(String::from("(??/??/????): Escreva aqui o problema - Seu nome"));
+            self.current_servico = self.add_servico.len().clone();
+            let mut elements_servicos: Vec<Html> = Vec::new();
+            for (_, i) in self.add_servico.clone().iter().enumerate()
+            {
+                let letters = i.to_string().chars().collect::<Vec<char>>();
+                for (j, l) in letters.iter().enumerate()
+                {
+                    if j <= 11
+                    {
+                        name_servicos_data.push(*l);
+                    }
+                    else
+                    {
+                        words.push(name_servicos_data.iter().collect::<String>().clone()).clone();
+                        break;
+                    }
+                }
+                elements_servicos.push(html!{
+                                <label>
+                                    <input onclick=self.link.callback(move |_| Msg::CurrentServico(value)) type="radio" name="radio" checked=true/>
+                                    <span>{"(??/??/????)"}</span>
+                                </label>
+                            });
+            }
+            self.add_servico_struct = elements_servicos;
+            true
+        }
+        CurrentProblema(number) =>
+        {
+            self.current_problema = number;
+            true
+        }
+        CurrentServico(number) =>
+        {
+            self.current_servico = number;
+            true
+        }
         Payload(option, modify) => {
             match option
             {
@@ -369,17 +562,35 @@ impl Component for Admin {
                  8 => {self.debug_tamMonitor = modify; if self.allow_modify == true {caller::write_user_data_tam_monitor(JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()), JsValue::from_str(Box::leak(self.debug_tamMonitor.clone().into_boxed_str())));}},
                  9 => {self.debug_ram = modify; if self.allow_modify == true {caller::write_user_data_ram(JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()), JsValue::from_str(Box::leak(self.debug_ram.clone().into_boxed_str())));}},
                  10 => {self.debug_status = modify; if self.allow_modify == true {caller::write_user_data_status(JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()), JsValue::from_str(Box::leak(self.debug_status.clone().into_boxed_str())));}},
-                 13 => {self.debug_password 
-                    = modify; if self.debug_password == "NBxT@9#JWGcj=-zbuMDz5j3*N3$P++dJBGH&5qFGhNkBV3Kkn!sej79W_CDapPs-YdwkWVyP8m$CjhPgR%e$?7%_ED7wZk4c=j=!KF-$@2^3pWucWrVmthLpsP^6PFgj=+@awvq_K+?hd3BxbE?&KGcp+q6H!@hgd57uDFd_KM%mHWS_@gXS^2LS4*9wdf-zSLsVK#J3qWGuA8E-a?ZC_3smGVe4&%#nvSSP&A6KQtV2_Us*ZgmE!&MhBMm$?32ZD9xDzjVq$XQFR2K8QpYetFbNPrxd9WTtWPS9Hk2U5@W*_W3mfny=3ax7+TSdkAas4x9RQ6MCw2!ad&7Ns%zBAfL8d7u*QkP3D3z?r&JKaF56pJ6dKp_PnR8*ySEAYcF%mpL?W8@^g3Ekj2te6z+v5&M#$qP7GVx54@zL*LPAnsCqz2jbMams_ZEseeS^Qp9wvUf3%jst4WYkXJWQ^u-EZGs^p2e#G=pPM?e=#Y6MvU5q7x+4pCdNF4asvkbYQeMCBHRChvAU^9#_fZcbUTRnEH%HcUGU-7x33B%YEz3QgJWzu9uDEbdkr3^vsS*KL7BRAEcSP55Udk%SEMzWf=*cASxVS%%t-@BuPwsF5wUXjP^@4aTAr&AkyH*hUSKsk&+4J%3VeV!WD%mxGFnrLuMztUygqB7-H#uSRthJKhA7&ykq*HZL#GLTVA3-^*U!b9G*a@xRa^drjNt9z-aCHMu!mLpws&JC^TNa^V6-3Vh+LDe+=ZJjH-4##Pj3gmfPRffRV3neyh$-3Tw=akQ2YN7gutXB9Cph_bv+2CwS8z52@TW*uXn4n7=waS3BQG%X2UpvZrVyE5h_bmbsgAB_zn3%w5pVBP#G69+c*YRyA7pJJh3m_N5s+BSy*7pUNp=P#NUf5fY=%sCUg!bmHKqfc8JcCx7e?gJhvHecVdkr@n9j^Uq3Mgctd?CAn_%mz#?Ma6Kyp%pbD93W?HLNf@z-YgLQ4sHT+puh7Cqj$c%RaAFCA&NLYDYn+7@!4AXgC&cwVwr=xKn?79qjYPz5U6QRx-Xesx%XzU82q4tDx4s6^DEkH!Rk5kPbQy#!t7T=d_kY-!z3!^#aZKu%6Hq3tUJeG3TbRMzV=2BWRsrpsBCVXTAhQT#tcGeQYUHL8k%Zwh-pLDF3p!*wD?=p*Sr=w5#mqXsU3nUx@vV6$2&aVNu88Avj3!-f3&N%AA*_57aQUfmFnr!ekANDrzTFeqKrhwk_wv6Y5JpHAEZw$NH8gsgu-BA7yu_7Wuzu62HT-vLkBrPPz?3byS5uxRJ#Y8xFBPA3wh$Ld-BQntmuYsnpv@CwTAqpJZVwqp2n=H-a4Syn%6-JUXJpVUP+-24M?cZYxaJDHkBzhsnmTF^m+GqTf8_^7Ney_&WjDSx$DNDkc?cmZmJN4SZ*Zz2$R_LQAW5zWJ9=3X7pjeCF_%_BY-fyFzS_bG93^!@?#aMVxFPvzG7jAwrzqVvtKegGqvCxJr#6HVg+#ZR3VUX^JCT59##HMg8CFQe_PxV+neKaq+KzBpk83&U5E8NQSd?-4p=@m$n?v2fxUAYub9!Hd&&vSg!G%y#wG6_+he+!DRQNX%zK*GwmJfuW@gmuJua%pVBcWa$ZW#?7MT4mcTv&a#Gw-bgHMpqQnv%W8wGnCFbM4xyt6cMs7S&7SB%hJmH%_X_54MzT3mtv3vf3TYnz=LSnrvp9@%b-xu2E9paJtWGPRTUcCCxG-M2caPhvaS&26WMS_Q&@uxu+PYEzJ?xW-uve2n4*gXBQ3hW@+mUqNQahdnZTWaXc-ZA5VGL7xnPm-nB!x!3zBP66Vv^3JeEb%FT!?^zgvrYn=uGWb-r=fpuRX%AMcQy!awupkBpv3a!_5+-f=Wce2c4FkyA=u-D7+h7Yz?TRf7=^RFsAw&5YusQ8Gh_!Qu62+_tqQV8KdkNjkmnPT+pR$eTGX6!PNsSe=@2J2t%f7Nr_-EZg_-hqKVjTR9t4QhuQh%w--CXU%C+md^FK-Xu4Ejmy%4U&r6KpkD6zqQg^mj4cs+@9s$kGS2Yz!P+aCZ_NrqP2*=&k".to_string(){self.allow_modify = true;}},
-                //  11 => {self.debug_status = modify; caller::write_user_data_setor(JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()), JsValue::from_str(Box::leak(self.debug_setor.clone().into_boxed_str())));},
+                 11 => {self.debug_problemas = modify;},
+                 12 => {self.debug_servicos = modify;},
+                 13 => {self.debug_password = modify; if self.debug_password == "cav2017".to_string(){self.allow_modify = true;}},
                 _ => unimplemented!()
             }
             true
         }
-        Submit =>
+        Submit(value) =>
         {
-            // caller::remove_new_pc(JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), JsValue::from_str(""), vec![JsValue::from_str("")].into_boxed_slice(), vec![JsValue::from_str("")].into_boxed_slice(), JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()));
-            // caller::write_new_pc(JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), vec![JsValue::from_str("test")].into_boxed_slice(), vec![JsValue::from_str("test")].into_boxed_slice(), JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()));
+            match value
+            {
+                0 => {if self.allow_modify == true {caller::write_user_data_visibilidade(JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()), JsValue::from_bool(false), JsValue::from_str(Box::leak(format!("{} - DELETADO", self.export_name().clone()).into_boxed_str())));}},
+                1 => {if self.allow_modify == true {self.add_problema = self.export_problemas();
+            self.add_problema[self.current_problema] = self.debug_problemas.clone();
+            // self.add_servico[self.current_servico] = self.debug_servicos.clone();
+            let mut problemas: Vec<JsValue> = Vec::new();
+            for i in self.add_problema.iter()
+            {
+                problemas.push(JsValue::from_str(Box::leak(i.clone().into_boxed_str())));
+            }caller::write_user_data_problemas(JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()), problemas.into_boxed_slice(), JsValue::from_f64(self.current_problema.clone() as f64));}},
+                2 => {if self.allow_modify == true {self.add_servico = self.export_servicos();
+            self.add_servico[self.current_servico] = self.debug_servicos.clone();
+            let mut servicos: Vec<JsValue> = Vec::new();
+            for i in self.add_servico.iter()
+            {
+                servicos.push(JsValue::from_str(Box::leak(i.clone().into_boxed_str())));
+            }caller::write_user_data_servicos(JsValue::from_f64(self.props.id.clone().parse::<f64>().unwrap()), servicos.into_boxed_slice(), JsValue::from_f64(self.current_servico.clone() as f64));}},
+                _ => unimplemented!()
+            }
             true
         }
         GetInfo => {
@@ -446,7 +657,7 @@ impl Component for Admin {
                                     top: 20%;">{format!("Você está editando o computerID: {}", self.props.id.clone())}</h4>
                     </div>
                 <div class="container">
-                    <div class="components" style="width: 100%; margin-top: 60px; margin-bottom: 100px; grid-template-columns: auto;overflow: auto;">
+                    <div class="components" style="width: 100%; margin-top: 60px; margin-bottom: 100px; grid-template-columns: auto;overflow: auto; height: auto;">
                     // <h1>{self.debug_setor.clone()}</h1>
                         {self.view_html()}
                     </div>
