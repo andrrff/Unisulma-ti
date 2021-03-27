@@ -88,13 +88,13 @@ impl Admin
                 let servicos = pc.servicos.clone();
                 let mut elements_problemas: Vec<Html> = vec![html!{}];
                 let mut elements_servicos: Vec<Html> = vec![html!{}];
-                if pc.problemas.len().clone() > 1
+                if problemas.len().clone() > 1
                 {
                     let mut words: Vec<String> = Vec::new();
                     // let problemas = pc.problemas.clone();
                     // let servicos = pc.servicos.clone();
                     // let mut elements_problemas: Vec<Html> = Vec::new();
-                    for (e, i) in pc.problemas.iter().enumerate()
+                    for (e, i) in problemas.iter().enumerate()
                     {
                         let mut name_problemas_data: Vec<char> = Vec::new();
                         let letters = i.to_string().chars().collect::<Vec<char>>();
@@ -117,9 +117,11 @@ impl Admin
                                         </label>
                                     });
                     }
+                }
+                if servicos.len().clone() > 1
+                {
                     let mut words: Vec<String> = Vec::new();
-                    let mut elements_servicos: Vec<Html> = Vec::new();
-                    for (e, i) in pc.servicos.iter().enumerate()
+                    for (e, i) in servicos.iter().enumerate()
                     {
                         let mut name_servicos_data: Vec<char> = Vec::new();
                         let letters = i.to_string().chars().collect::<Vec<char>>();
@@ -658,7 +660,7 @@ impl Component for Admin {
                     </div>
                 <div class="container">
                     <div class="components" style="width: 100%; margin-top: 60px; margin-bottom: 100px; grid-template-columns: auto;overflow: auto; height: auto;">
-                    // <h1>{self.debug_setor.clone()}</h1>
+                    <h1>{"*Os botões estão com seus callback em produção ainda, estão funcionando porém ainda não está 100%, portanto paciência :)"}</h1>
                         {self.view_html()}
                     </div>
                 </div>
