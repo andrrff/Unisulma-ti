@@ -25,7 +25,8 @@ pub struct Info {
     monitor: String,
     tamMonitor: String,
     ram: String,
-    status: String
+    status: String,
+    visibilidade: bool
 }
 
 #[derive(Deserialize, Debug, Clone)]
@@ -89,7 +90,7 @@ impl Home {
                 let mut count = 0;
                 for i in 0..pc.data.len()
                 {
-                        if search(pc.data[i].user.clone().to_lowercase(), self.debugged_payload.clone().to_lowercase()) && self.option == true || search(pc.data[i].setor.clone().to_lowercase(), self.debugged_payload.clone().to_lowercase()) && self.option == false
+                        if search(pc.data[i].user.clone().to_lowercase(), self.debugged_payload.clone().to_lowercase()) && self.option == true && pc.data[i].visibilidade.clone() == true || search(pc.data[i].setor.clone().to_lowercase(), self.debugged_payload.clone().to_lowercase()) && self.option == false && pc.data[i].visibilidade.clone() == true
                         {
                             count += 1;
                             user.push(pc.data[i].user.clone());
@@ -158,22 +159,24 @@ impl Home {
                                 </div>
                                 <a onclick=self.link.callback(move |_| Msg::Button(number as f64))>
                                     // <AppAnchor route=AppRoute::AdminCreate(pc.data.len().to_string())>
-                                    <span class="tag is-danger" style="margin: 5px; align-items: center;
-                                                                        background-color: #f5f5f5;
-                                                                        border-radius: 5px 18px 18px 5px;
-                                                                        box-shadow: 0.2rem 0.2rem 0.5rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-                                                                        color: #4a4a4a;
-                                                                        display: inline-flex;
-                                                                        /* left: -10px; */
-                                                                        font-size: .75rem;
-                                                                        height: 5.1em;
-                                                                        justify-content: center;
-                                                                        line-height: 1.5;
-                                                                        padding-left: .75em;
-                                                                        padding-right: .75em;
-                                                                        white-space: nowrap;
-                                                                        background-color: #E4EBF5;">
-                                    <strong style="color: #6D5DFC; font-weight: 790; font-size: 400%;">{"+"}</strong></span>
+                                    <span class="btn tag is-danger" style="margin: 5px;
+                                                                            align-items: center;
+                                                                            background-color: #f5f5f5;
+                                                                            border-radius: 5px 18px 18px 5px;
+                                                                            box-shadow: 0.2rem 0.2rem 0.5rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                                            color: #4a4a4a;
+                                                                            display: inline-flex;
+                                                                            /* left: -10px; */
+                                                                            font-size: .75rem;
+                                                                            height: 5.1em;
+                                                                            width: 10px;
+                                                                            justify-content: center;
+                                                                            line-height: 1.5;
+                                                                            padding-left: .75em;
+                                                                            padding-right: .75em;
+                                                                            white-space: nowrap;
+                                                                            background-color: #E4EBF5;">
+                                    <strong style="color: #6D5DFC; font-weight: 790; font-size: 400%;"><img src="https://img.icons8.com/material-sharp/24/000000/add-user-male.png"/></strong></span>
                                     // </AppAnchor>
                                 </a>
                                 // <div class="icon" style="padding-left: 10px">
@@ -208,13 +211,23 @@ impl Home {
                         <ol class="gradient-list con-cards" style="margin-right: 30px;">
                             {for cards.clone()}
                         </ol>
-                        <div class="level-item" style="padding-top: 100px; padding-bottom: 40px">
-                            <h1 style="font-family: 'Oswald', sans-serif;
-                                        color: #383741;
-                                        font-size: 100%;
-                                        font-weight: 700;">
-                                <a
-                        href="javascript:void(
+                        <div class="level-item" style="padding: 80px;">
+                        <button class="btn __primary" style="min-width: 60px;
+                                                font-size: 120%;
+                                                font-weight: 600;
+                                                height: 60px;
+                                                color: #4a4a4a;
+                                                top: 85%;
+                                                right: 30%;
+                                                border-radius: 20px;
+                                                background: #e4ebf5;
+                                                border: 0px;
+                                                outline: none;
+                                                cursor: pointer;
+                                                z-index: 200;
+                                                margin: 10px;
+                                                box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                transition: all .25s ease;" href="javascript:void(
                             window.open(
                             'https://form.jotform.com/210793492450053',
                             'blank',
@@ -225,19 +238,28 @@ impl Home {
                             )
                         )
                         ">
-                        <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{"Reportar"}
-                        </a>  {" | "}</h1>
-                        <h1 style="font-family: 'Oswald', sans-serif;
-                                        color: #383741;
-                                        font-size: 100%;
-                                        font-weight: 700;">
-                                <a href="https://github.com/andrrff"><img src="https://img.icons8.com/material-sharp/24/000000/github.png"/>{" andrrff GitHub"}</a>{" | "}</h1>
-                        <h1 style="font-family: 'Oswald', sans-serif;
-                                        color: #383741;
-                                        font-size: 100%;
-                                        font-weight: 700;">
-                                <a href="https://github.com/andrrff/Unisulma-ti/blob/main/sys-info/sys-info%20-%20Unisulma%20TI%20by%20andrrff.exe?raw=true"><img src="https://img.icons8.com/ios-filled/50/000000/computer.png" style="max-width: 24px;"/>{" Meu PC"}</a></h1>
-                        </div>
+                                    <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{" Relatar um problema"}
+                                </button>
+                        <button class="btn __primary" style="min-width: 60px;
+                                                font-size: 120%;
+                                                font-weight: 600;
+                                                height: 60px;
+                                                width: 60px;
+                                                color: #4a4a4a;
+                                                top: 85%;
+                                                right: 5%;
+                                                border-radius: 20px;
+                                                background: #e4ebf5;
+                                                border: 0px;
+                                                outline: none;
+                                                cursor: pointer;
+                                                z-index: 200;
+                                                margin: 10px;
+                                                box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                transition: all .25s ease;" href="https://github.com/andrrff">
+                                    <img src="https://img.icons8.com/material-sharp/24/000000/github.png"/>
+                                </button>
+                            </div>
                     </>
                 }
             }
@@ -291,12 +313,14 @@ impl Component for Home {
     fn create(_props: Self::Properties, link: ComponentLink<Self>) -> Self {
         let callback = link.callback(|_msg: Msg| Msg::GetInfo);
         callback.emit(Msg::GetInfo);
+        // let callback = link.callback(move |_msg: Msg| Msg::Payload("".to_string()));
+        // callback.emit(Msg::Payload("".to_string()));
         Self {
             payload:          String::default(),
             option: true,
             option01: true,
             option02: false,
-            debugged_payload: format!("{}", "Como se chamar?"),
+            debugged_payload: format!("{}", "Como se chama?"),
             fetch_task: None,
             pc: None,
             link,
@@ -311,7 +335,7 @@ impl Component for Home {
 
         match msg {
             Button(number) => {
-                caller::write_new_pc(JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), vec![JsValue::from_str("?")].into_boxed_slice(), vec![JsValue::from_str("?")].into_boxed_slice(), JsValue::from_f64(number));
+                caller::write_new_pc(JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), vec![JsValue::from_str("?")].into_boxed_slice(), vec![JsValue::from_str("?")].into_boxed_slice(), JsValue::from_f64(number), JsValue::from_bool(true));
                 // caller::write_new_pc(JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), vec![JsValue::from_str("test")].into_boxed_slice(), vec![JsValue::from_str("test")].into_boxed_slice(), JsValue::from_f64(number));
                 let word = self.debugged_payload.clone();
                 let callback = self.link.callback(move |_msg: Msg| Msg::Payload(word.clone()));
@@ -341,7 +365,7 @@ impl Component for Home {
                     self.debugged_payload = format!("{}", payload);
                     if self.debugged_payload == ""
                     {
-                        self.debugged_payload = format!("{}", "Como se chamar?");
+                        self.debugged_payload = format!("{}", "Como se chama?");
                     }
                     self.payload = payload;
                     true
@@ -381,6 +405,7 @@ impl Component for Home {
     fn view(&self) -> Html {
         html! {
             <>
+            // <button onclick=self.link.callback(|_| Msg::GetInfo)>{"abrir"}</button>
             { self.view_fetching() }
             { self.view_iss_location() }
             { self.view_error() }
