@@ -212,6 +212,17 @@ impl Home {
                             {for cards.clone()}
                         </ol>
                         <div class="level-item" style="padding: 80px;">
+                        <a href="javascript:void(
+                            window.open(
+                            'https://form.jotform.com/210793492450053',
+                            'blank',
+                            'scrollbars=yes,
+                            toolbar=no,
+                            width=700,
+                            height=500'
+                            )
+                        )
+                        ">
                         <button class="btn __primary" style="min-width: 60px;
                                                 font-size: 120%;
                                                 font-weight: 600;
@@ -227,19 +238,11 @@ impl Home {
                                                 z-index: 200;
                                                 margin: 10px;
                                                 box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-                                                transition: all .25s ease;" href="javascript:void(
-                            window.open(
-                            'https://form.jotform.com/210793492450053',
-                            'blank',
-                            'scrollbars=yes,
-                            toolbar=no,
-                            width=700,
-                            height=500'
-                            )
-                        )
-                        ">
+                                                transition: all .25s ease;">
                                     <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{" Relatar um problema"}
                                 </button>
+                        </a>
+                        <a href="https://github.com/andrrff">
                         <button class="btn __primary" style="min-width: 60px;
                                                 font-size: 120%;
                                                 font-weight: 600;
@@ -256,9 +259,10 @@ impl Home {
                                                 z-index: 200;
                                                 margin: 10px;
                                                 box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-                                                transition: all .25s ease;" href="https://github.com/andrrff">
+                                                transition: all .25s ease;">
                                     <img src="https://img.icons8.com/material-sharp/24/000000/github.png"/>
                                 </button>
+                        </a>
                             </div>
                     </>
                 }
