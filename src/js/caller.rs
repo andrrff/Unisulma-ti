@@ -25,6 +25,14 @@ extern "C" {
     pub fn write_user_data_ram(userId: JsValue, ram: JsValue);
     #[wasm_bindgen(js_name = "writeUserDataStatus")]
     pub fn write_user_data_status(userId: JsValue, status: JsValue);
+    #[wasm_bindgen(js_name = "writeUserDataVisibilidade")]
+    pub fn write_user_data_visibilidade(userId: JsValue, visibilidade: JsValue, user: JsValue);
+    #[wasm_bindgen(js_name = "writeUserDataProblemas")]
+    pub fn write_user_data_problemas(userId: JsValue, servicos: Box<[JsValue]>, servicoId: JsValue);
+    #[wasm_bindgen(js_name = "writeUserDataServicos")]
+    pub fn write_user_data_servicos(userId: JsValue, problemas: Box<[JsValue]>, problemaId: JsValue);
     #[wasm_bindgen(js_name = "writeNewPc")]
-    pub fn write_new_pc(setor: JsValue, id: JsValue, hdd: JsValue, cpu: JsValue, os: JsValue, user: JsValue, marca: JsValue, monitor: JsValue, tamMonitor: JsValue, ram: JsValue, status: JsValue, servicos: Box<[JsValue]>, problemas: Box<[JsValue]>, new_push: JsValue);
+    pub fn write_new_pc(setor: JsValue, id: JsValue, hdd: JsValue, cpu: JsValue, os: JsValue, user: JsValue, marca: JsValue, monitor: JsValue, tamMonitor: JsValue, ram: JsValue, status: JsValue, servicos: Box<[JsValue]>, problemas: Box<[JsValue]>, new_push: JsValue, visibilidade: JsValue);
+    #[wasm_bindgen(js_name = "removeNewPc")]
+    pub fn remove_new_pc(setor: JsValue, id: JsValue, hdd: JsValue, cpu: JsValue, os: JsValue, user: JsValue, marca: JsValue, monitor: JsValue, tamMonitor: JsValue, ram: JsValue, status: JsValue, servicos: Box<[JsValue]>, problemas: Box<[JsValue]>, new_push: JsValue);
 }
