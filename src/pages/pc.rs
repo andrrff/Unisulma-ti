@@ -126,6 +126,37 @@ impl Pc
 
                 html! {
                     <>
+                    <a href="javascript:void(
+                            window.open(
+                            'https://form.jotform.com/210793492450053',
+                            'blank',
+                            'scrollbars=yes,
+                            toolbar=no,
+                            width=700,
+                            height=500'
+                            )
+                        )
+                        ">
+                        <button class="btn __primary" style="min-width: 60px;
+                                                        font-size: 120%;
+                                                        font-weight: 600;
+                                                        height: 60px;
+                                                        color: #4a4a4a;
+                                                        position: absolute;
+                                                        bottom: 115%;
+                                                        right: 2%;
+                                                        border-radius: 20px;
+                                                        background: #e4ebf5;
+                                                        border: 0px;
+                                                        outline: none;
+                                                        cursor: pointer;
+                                                        z-index: 200;
+                                                        margin: 10px;
+                                                        box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                        transition: all .25s ease;">
+                        <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{" Relatar um problema"}
+                    </button>
+                        </a>
                     <div class="segmented-control" style="position: absolute; left: 10%; top: 15%;">
       
                     <input type="radio" name="radio2" value="3" id="tab-1" onclick=self.link.callback(move |_| Msg::Info(0)) checked=self.option01/>
@@ -270,7 +301,6 @@ impl Component for Pc {
     }
 
     fn view(&self) -> Html {
-        caller::write_new_pc(JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), vec![JsValue::from_str("test")].into_boxed_slice(), vec![JsValue::from_str("test")].into_boxed_slice(), JsValue::from_f64(118.0));
         html! {
             <>
             <div class="" style="padding-left: 10px; margin: 30px;">
