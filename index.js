@@ -79,8 +79,27 @@ export function writeUserDataStatus(userId, status) {
     });
     console.log("Write In Database - STATUS✅");
 }
+export function writeUserDataProblemas(userId, problemas, problemaId) {
+    firebase.database().ref('data/' + userId).update({
+        problemas: problemas
+    });
+    console.log("Write In Database - PROBLEMAS✅");
+}
+export function writeUserDataServicos(userId, servicos, servicoId) {
+    firebase.database().ref('data/' + userId).update({
+        servicos: servicos
+    });
+    console.log("Write In Database - SERVICOS✅");
+}
+export function writeUserDataVisibilidade(userId, visibilidade, user) {
+    firebase.database().ref('data/' + userId).update({
+        visibilidade: visibilidade,
+        user: user,
+    });
+    console.log("Write In Database - VISIBILIDADE✅");
+}
 
-export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMonitor, ram, status, servicos, problemas, new_push) {
+export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMonitor, ram, status, servicos, problemas, new_push, visibilidade) {
     // A post entry.
     var postData = {
         setor: setor,
@@ -95,7 +114,8 @@ export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMon
         ram: ram,
         status: status,
         problemas: problemas,
-        servicos: servicos
+        servicos: servicos,
+        visibilidade: visibilidade
     };
 
     // Get a key for a new Post.
@@ -113,7 +133,7 @@ export function writeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMon
 
 export function removeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMonitor, ram, status, servicos, problemas, new_push) {
     // A post entry.
-    var postData = {
+    firebase.database().ref('data/' + new_push).update({
         setor: setor,
         id: id,
         hdd: hdd,
@@ -127,17 +147,18 @@ export function removeNewPc(setor, id, hdd, cpu, os, user, marca, monitor, tamMo
         status: status,
         problemas: problemas,
         servicos: servicos
-    };
+    });
 
-    // Get a key for a new Post.
-    // var newPostKey = firebase.database().ref().child('data').push().len;
-    // console.log(newPostKey);
+    // // Get a key for a new Post.
+    // // var newPostKey = firebase.database().ref().child('data').push().len;
+    // // console.log(newPostKey);
 
-    // Write the new post's data simultaneously in the posts list and the user's post list.
-    var updates = {};
-    updates['data/' + new_push] = postData;
+    // // Write the new post's data simultaneously in the posts list and the user's post list.
+    // var updates = {};
+    // updates['/data/' + new_push] = postData;
     // updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+    // firebase.database().ref('data' + new_push).set({
+    //     status: status
+    // });;
     console.log("Write In Database - REMOVE POST✅");
-
-    return firebase.database().ref().set(updates);
 }
