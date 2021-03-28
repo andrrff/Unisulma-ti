@@ -10,7 +10,7 @@ use wasm_bindgen::{JsValue, prelude::*};
 
 use crate::{
     switch::{AppAnchor, AppRoute},
-    components::pc_info,
+    components::{pc_info, info_hd, info_cpu, info_marcas},
     js::caller
 };
 
@@ -61,20 +61,88 @@ impl Pc
         let mut info: Html = html!{};
         match self.pc {
             Some(ref pc) => {
+                let mut image_windows = String::default();
+                // {
+                //     "WINDOWS 7 X86".to_string() => "http://4.bp.blogspot.com/-c5HGr4DDe9o/VmcdnzcdNyI/AAAAAAAAByc/F9lYoAYXxGQ/s1600/logo_windows_7.png".to_string(),
+                //     "WINDOWS 7 X64".to_string() => "http://4.bp.blogspot.com/-c5HGr4DDe9o/VmcdnzcdNyI/AAAAAAAAByc/F9lYoAYXxGQ/s1600/logo_windows_7.png".to_string(),
+                //     "WINDOWS 10".to_string() => "https://1.bp.blogspot.com/-DiXiU54cd6A/Xr2ZO_SKQBI/AAAAAAAAjMM/jjBPPEar5E0Eh7BuI90oLHJyyKpG_ReIACLcBGAsYHQ/s1600/Windows-10.png".to_string(),
+                //     _ => "none".to_string()
+                // };
+                if pc.os.clone().to_uppercase() == "WINDOWS 7 X86".to_string()
+                {
+                    image_windows = "http://4.bp.blogspot.com/-c5HGr4DDe9o/VmcdnzcdNyI/AAAAAAAAByc/F9lYoAYXxGQ/s1600/logo_windows_7.png".to_string();
+                }
+                else if pc.os.clone().to_uppercase() == "WINDOWS 7 X86".to_string()
+                {
+                    image_windows = "http://4.bp.blogspot.com/-c5HGr4DDe9o/VmcdnzcdNyI/AAAAAAAAByc/F9lYoAYXxGQ/s1600/logo_windows_7.png".to_string();
+                }
+                else if pc.os.clone().to_uppercase() == "WINDOWS 10".to_string()
+                {
+                    image_windows = "https://1.bp.blogspot.com/-DiXiU54cd6A/Xr2ZO_SKQBI/AAAAAAAAjMM/jjBPPEar5E0Eh7BuI90oLHJyyKpG_ReIACLcBGAsYHQ/s1600/Windows-10.png".to_string();
+                }
+                else
+                {
+                    image_windows = "none".to_string();
+                }
                 if self.option01
                 {
                     info = html!{
-                        <pc_info::Pc setor=pc.setor.clone()
-                                    id=pc.id.clone()
-                                    hdd=pc.hdd.clone()
-                                    cpu=pc.cpu.clone()
-                                    os=pc.os.clone()
-                                    user=pc.user.clone()
-                                    marca=pc.marca.clone()
-                                    monitor=pc.monitor.clone()
-                                    tamMonitor=pc.tamMonitor.clone()
-                                    ram=pc.ram.clone()
-                                    status=pc.status.clone()/>
+                        <>
+                            // <pc_info::Pc setor=pc.setor.clone()
+                            //             id=pc.id.clone()
+                            //             hdd=pc.hdd.clone()
+                            //             cpu=pc.cpu.clone()
+                            //             os=pc.os.clone()
+                            //             user=pc.user.clone()
+                            //             marca=pc.marca.clone()
+                            //             monitor=pc.monitor.clone()
+                            //             tamMonitor=pc.tamMonitor.clone()
+                            //             ram=pc.ram.clone()
+                            //             status=pc.status.clone()/>
+                            <div class="column" style="padding-top: 100px">
+                                <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                    <info_marcas::LoadInfo marca=pc.marca.clone()/>
+                                    <h1 style="padding-top: 10px;
+                                                color: #cdd5ea;
+                                                font-size: 210%;
+                                                font-weight: 600;">{pc.id.clone()}</h1>
+                                </div>
+                            </div>
+                                <div class="column">
+                                    <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                        <info_hd::LoadInfo hdd=pc.hdd.clone()/>
+                                        <info_cpu::LoadInfo cpu=pc.cpu.clone()/>
+                                    </div>
+                                </div>
+                            <div class="column">
+                                <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                    <div class="box_00">
+                                        <div style="padding-left: 30px">
+                                            <h1 style="font-size: 250%; font-weight: 600; padding-left: 20px">{"Sistema Operacional"}</h1>
+                                            <div style="padding-left: 10px">
+                                                <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                                    <div style="margin-right: 200px;">
+                                                        <h1><strong>{"Versão: "}</strong>{pc.os.clone()}</h1>
+                                                        <h1><strong>{"Status: "}</strong>{pc.status.clone()}</h1>
+                                                        <h1><strong>{"Memória Ram: "}</strong>{pc.ram.clone()}</h1>
+                                                    </div>
+                                                    <img src=image_windows style="width: 70px;"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box_01">
+                                        <div style="padding-left: 30px">
+                                            <h1 style="font-size: 250%; font-weight: 600; padding-left: 20px">{"Monitor"}</h1>
+                                            <div style="padding-left: 10px">
+                                                <h1><strong>{"Modelo: "}</strong>{pc.monitor.clone()}</h1>
+                                                <h1><strong>{"Tamanho do Monitor: "}</strong>{pc.tamMonitor.clone()}{"\""}</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </>
                     }
                 }
                 else if self.option02
@@ -137,28 +205,8 @@ impl Pc
                             )
                         )
                         ">
-                        <button class="btn __primary" style="min-width: 60px;
-                                                        font-size: 120%;
-                                                        font-weight: 600;
-                                                        height: 60px;
-                                                        color: #4a4a4a;
-                                                        position: absolute;
-                                                        bottom: 115%;
-                                                        right: 2%;
-                                                        border-radius: 20px;
-                                                        background: #e4ebf5;
-                                                        border: 0px;
-                                                        outline: none;
-                                                        cursor: pointer;
-                                                        z-index: 200;
-                                                        margin: 10px;
-                                                        box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-                                                        transition: all .25s ease;">
-                        <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{" Relatar um problema"}
-                    </button>
                         </a>
-                    <div class="segmented-control" style="position: absolute; left: 10%; top: 15%;">
-      
+                    <div class="segmented-control" style="position: absolute; left: 10%; top: 15%; background: #e4ebf5;">
                     <input type="radio" name="radio2" value="3" id="tab-1" onclick=self.link.callback(move |_| Msg::Info(0)) checked=self.option01/>
                     <label for="tab-1" class= "segmented-control__1">
                         <p style="color:#4A4A4A;">{"Info"}</p></label>
@@ -207,16 +255,6 @@ impl Pc
             }
         }
     }
-    // fn view_html(&self) -> String {
-    //     match self.pc {
-    //         Some(ref pc) => {
-    //             self.pc.
-    //         }
-    //         None => {
-    //             String::default()
-    //         }
-    //     }
-    // }
     fn view_fetching(&self) -> Html {
         if self.fetch_task.is_some() {
             html! { <p>{ "Carregando dados..." }</p> }
@@ -260,9 +298,24 @@ impl Component for Pc {
         Info(option) => {
             match option
             {
-                0 => {self.option01 = true; self.option02 = false; self.option03 = false;},
-                1 => {self.option01 = false; self.option02 = true; self.option03 = false},
-                2 => {self.option01 = false; self.option02 = false; self.option03 = true},
+                0 => 
+                {
+                    self.option01 = true; 
+                    self.option02 = false; 
+                    self.option03 = false;
+                },
+                1 => 
+                {
+                    self.option01 = false; 
+                    self.option02 = true; 
+                    self.option03 = false;
+                },
+                2 => 
+                {
+                    self.option01 = false; 
+                    self.option02 = false; 
+                    self.option03 = true;
+                },
                 _ => unimplemented!()
             }
             true
@@ -303,65 +356,94 @@ impl Component for Pc {
     fn view(&self) -> Html {
         html! {
             <>
-            <div class="" style="padding-left: 10px; margin: 30px;">
-                                // <div class="icon__home">
-                                //     <ion-icon name="home"></ion-icon></div>
-                                // <div class="icon__account">
-                                //     <ion-icon name="person"></ion-icon></div>
-                        <div class="icon__settings">
-                            <AppAnchor route=AppRoute::Home>
-                                <img src="https://img.icons8.com/material/24/000000/home--v5.png" style="margin-bottom: 5px;"/>
-                            </AppAnchor>
-                        </div>
-                    </div>
-                    <div>
-                        <h1 style=" font-size: 400%;
-                                    font-weight: 600;
-                                    z-index: 1;
-                                    text-align: center;
-                                    /* left: 40%; */
-                                    top: 10%;">{self.export_name()}</h1>
-                        <h4 style="font-size: 150%;
-                                    font-weight: 400;
-                                    z-index: 1;
-                                    text-align: center;
-                                    /* left: 40%; */
-                                    top: 20%;">{self.export_setor()}</h4>
-                    </div>
-                <div class="container">
-                    <div class="components" style="width: 100%; margin-top: 60px; margin-bottom: 100px; grid-template-columns: auto;overflow: auto;">
-                        {self.view_html()}
+                <div style="padding-left: 10px; margin: 30px;">
+                    <div class="icon__settings">
+                        <AppAnchor route=AppRoute::Home>
+                            <img src="https://img.icons8.com/material/24/000000/home--v5.png" style="margin-bottom: 5px;"/>
+                        </AppAnchor>
                     </div>
                 </div>
+                <div>
+                    <h1 style=" font-size: 400%;
+                                font-weight: 600;
+                                z-index: 1;
+                                text-align: center;
+                                /* left: 40%; */
+                                top: 10%;">{self.export_name()}</h1>
+                    <h4 style="font-size: 150%;
+                                font-weight: 400;
+                                z-index: 1;
+                                text-align: center;
+                                /* left: 40%; */
+                                top: 20%;">{self.export_setor()}</h4>
+                </div>
+                <div class="container" style="transform: scale(0.8);">
+                <div class="columns is-desktop">
+                    {self.view_html()}
+                </div>
+                </div>
                 <div class="level-item" style="padding-top: 100px; padding-bottom: 40px">
-                            <h1 style="font-family: 'Oswald', sans-serif;
-                                        color: #383741;
-                                        font-size: 100%;
-                                        font-weight: 700;">
-                                <a
-                        href="javascript:void(
-                            window.open(
-                            'https://form.jotform.com/210793492450053',
-                            'blank',
-                            'scrollbars=yes,
-                            toolbar=no,
-                            width=700,
-                            height=500'
-                            )
-                        )
-                        ">
-                        <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{"Reportar"}
-                        </a>  {" | "}</h1>
-                        <img src="https://img.icons8.com/material-sharp/24/000000/github.png" style="max-width: 24px;"/><h1 style="font-family: 'Oswald', sans-serif;
-                                        color: #383741;
-                                        font-size: 100%;
-                                        font-weight: 700;">
-                                <a href="https://github.com/andrrff">{" andrrff GitHub"}</a></h1>{" | "}<img src="https://img.icons8.com/small/16/000000/microsoft-admin.png" style="max-width: 24px;"/><h1 style="font-family: 'Oswald', sans-serif;
-                                        color: #383741;
-                                        font-size: 100%;
-                                        font-weight: 700;"><AppAnchor route=AppRoute::Admin(self.props.id.clone().parse::<String>().unwrap())><a>{"Admin"}</a></AppAnchor></h1>
-                                
-                        </div>   
+                    <a href="https://github.com/andrrff">
+                        <button class="btn __primary" style="min-width: 60px;
+                                                font-size: 120%;
+                                                font-weight: 600;
+                                                height: 60px;
+                                                width: 60px;
+                                                color: #4a4a4a;
+                                                top: 85%;
+                                                right: 5%;
+                                                border-radius: 20px;
+                                                background: #e4ebf5;
+                                                border: 0px;
+                                                outline: none;
+                                                cursor: pointer;
+                                                z-index: 200;
+                                                margin: 10px;
+                                                box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                transition: all .25s ease;">
+                            <img src="https://img.icons8.com/material-sharp/24/000000/github.png"/>
+                        </button>
+                    </a>
+                    <AppAnchor route=AppRoute::Admin(self.props.id.clone().parse::<String>().unwrap())>
+                        <button class="btn __primary" style="min-width: 60px;
+                                                font-size: 120%;
+                                                font-weight: 600;
+                                                height: 60px;
+                                                width: 60px;
+                                                color: #4a4a4a;
+                                                top: 85%;
+                                                right: 5%;
+                                                border-radius: 20px;
+                                                background: #e4ebf5;
+                                                border: 0px;
+                                                outline: none;
+                                                cursor: pointer;
+                                                z-index: 200;
+                                                margin: 10px;
+                                                box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                transition: all .25s ease;">
+                            <img src="https://img.icons8.com/small/16/000000/microsoft-admin.png" style="max-width: 24px;"/>
+                        </button>
+                    </AppAnchor>
+                    <button class="btn __primary" style="min-width: 60px;
+                                                        font-size: 120%;
+                                                        font-weight: 600;
+                                                        height: 60px;
+                                                        color: #4a4a4a;
+                                                        top: 85%;
+                                                        right: 5%;
+                                                        border-radius: 20px;
+                                                        background: #e4ebf5;
+                                                        border: 0px;
+                                                        outline: none;
+                                                        cursor: pointer;
+                                                        z-index: 200;
+                                                        margin: 10px;
+                                                        box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+                                                        transition: all .25s ease;">
+                        <img src="https://img.icons8.com/metro/26/000000/error.png" style="max-width: 24px;"/>{" Relatar um problema"}
+                    </button>
+                </div>   
             </>
         }
     }
