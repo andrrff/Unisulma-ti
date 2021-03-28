@@ -66,6 +66,9 @@ impl Unisulma{
             AppRoute::Admin(id) => {
                 html! { <Admin id=id /> }
             }
+            // AppRoute::AdminCreate(id) => {
+            //     html! { <AdminCreate id=id /> }
+            // }
             AppRoute::PageNotFound(Permissive(route)) => {
                 html! { <PageNotFound route=route /> }
             }
