@@ -833,6 +833,66 @@
         .text_config_01 {
             font-family: monospace;
             color: #383741;
-            font-size: 150%;
-            font-weight: 500;
+            font-size: 120%;
+            font-weight: 550;
+        }
+        
+        .components_01 {
+            width: 300%;
+            transform: scale(1);
+            grid-template-columns: auto;
+            min-height: 600px;
+            height: auto;
+        }
+        
+        @media screen and (max-width: 415px) {
+            .components_01 {
+                width: 300%;
+                transform: scale(1);
+                grid-template-columns: auto;
+                min-height: 600px;
+                height: auto;
+            }
+        }
+        
+        .box_01 {
+            width: 250px;
+            height: 150px;
+            margin-left: 20px;
+            border-radius: 3rem;
+            box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white)
+        }
+        
+        .box_00 {
+            width: 550px;
+            height: 150px;
+            margin-left: 20px;
+            border-radius: 3rem;
+            box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white)
+        }
+        
+        @media screen and (min-width: 1024px) {
+            .columns.is-desktop {
+                display: block;
+            }
+        }
+        
+        @media screen and (max-width: 504px) {
+            .level-item {
+                display: block;
+            }
+            .box_01 {
+                width: 250px;
+                height: 150px;
+                margin-left: 20px;
+                border-radius: 3rem;
+                box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white)
+            }
+            .box_00 {
+                width: 550px;
+                height: 150px;
+                margin-left: 20px;
+                border-radius: 3rem;
+                box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white)
+            }
         }
