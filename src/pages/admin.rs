@@ -312,7 +312,7 @@ impl Admin
                                                                         border: 2px solid #999;
                                                                         outline: none;
                                                                     }" placeholder="(??/??/????): Escreva aqui o problema - Seu nome" oninput=self.link.callback(|input: InputData| Msg::Payload(11, input.value))>{pc.problemas[self.current_problema].clone()}</textarea>
-                                                                    <button class="submit-confirm" onclick=self.link.callback(|_| Msg::Submit(1)) style="margin-top: 15px; margin-bottom: 100px;">{"Confimar"}</button>
+                                                                    <a class="submit-confirm" onclick=self.link.callback(|_| Msg::Submit(1)) style="margin-top: 15px; margin-bottom: 100px; text-align: center;">{"Confimar"}</a>
                                     <span class="message">{"Ok. I'll go first. I'm a big fan of the New York Giants. You?"}</span>
                                     </div>
                                     <fieldset>
@@ -340,11 +340,11 @@ impl Admin
                                                         border: 2px solid #999;
                                                         outline: none;
                                                     }" placeholder="(??/??/????): Escreva aqui o serviços - Seu nome" oninput=self.link.callback(|input: InputData| Msg::Payload(12, input.value))>{pc.servicos[self.current_servico].clone()}</textarea>
-                                                    <button class="submit-confirm" onclick=self.link.callback(|_| Msg::Submit(2)) style="margin-top: 15px; margin-bottom: 100px;">{"Confimar"}</button>
+                                                    <a class="submit-confirm" onclick=self.link.callback(|_| Msg::Submit(2)) style="margin-top: 15px; margin-bottom: 100px; text-align: center;">{"Confimar"}</a>
                                     </div>
                                 </div>
                                 <button class="submit">{"Reload"}</button>
-                                <button class="submit-delete" onclick=self.link.callback(|_| Msg::Submit(0)) style="margin-top: 15px;">{"Deletar"}</button>
+                                <a class="submit-delete" onclick=self.link.callback(|_| Msg::Submit(0)) style="margin-top: 15px; text-align: center;">{"Deletar"}</a>
                             </form>
                     }
                 };
