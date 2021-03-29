@@ -95,56 +95,37 @@ impl Home {
                             count += 1;
                             user.push(pc.data[i].user.clone());
                             cards.push(html!{
-                                <AppAnchor route=AppRoute::Pc(pc.data[i].id.clone(), i.to_string())>
-                                    <li style="background: white; min-width: 500px;min-height: 350px;  
-                                            border: none;
-                                            margin: 30px;
-                                            border-radius: 1rem;
-                                            font-size: 1.4rem;
-                                            padding-left: 3.8rem;
-                                            box-shadow: 0.2rem 0.2rem 0.5rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-                                            background: none;
-                                            font-family: inherit;
-                                            color: #9baacf;">
-                                    <strong><h2 class="text_config" style="font-size: 150%;font-weight: 1000; padding-bottom: 20px; color: #6d5dfc">
-                                        {pc.data[i].user.clone().to_uppercase()}{":"}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/material-sharp/24/000000/marker.png"/><strong>{"Setor: "}</strong>{pc.data[i].setor.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/ios-glyphs/30/000000/medical-id.png"/><strong>{"Computer ID: "}</strong>{pc.data[i].id.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/fluent-systems-filled/24/000000/hdd.png"/><strong>{"HDD: "}</strong>{pc.data[i].hdd.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/material/24/000000/smartphone-cpu--v1.png"/><strong>{"CPU: "}</strong>{pc.data[i].cpu.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/metro/26/000000/windows-logo.png"/><strong>{"OS: "}</strong>{pc.data[i].os.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/windows/32/000000/flipboard-logo.png"/><strong>{"Marca da Máquina: "}</strong>{pc.data[i].marca.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/material-sharp/24/000000/monitor.png"/><strong>{"Monitor: "}</strong>{pc.data[i].monitor.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/windows/32/000000/page-size.png"/><strong>{"Tamanho do monitor: "}</strong>{pc.data[i].tamMonitor.clone().to_uppercase()}{"\""}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/material-rounded/24/000000/smartphone-ram.png"/><strong>{"Mem. Ram: "}</strong>{pc.data[i].ram.clone().to_uppercase()}
-                                    </h2></strong>
-                                    <strong><h2 class="text_config">
-                                        <img src="https://img.icons8.com/metro/26/000000/unknown-status.png"/><strong>{"Status do Sistema: "}</strong>{pc.data[i].status.clone().to_uppercase()}
-                                    </h2></strong>
-                                </li>
-                                </AppAnchor>
+                                <tr>
+                                        // <AppAnchor route=AppRoute::Pc(pc.data[i].id.clone(), i.to_string())>
+                                        <td data-th="Nome"><AppAnchor route=AppRoute::Pc(pc.data[i].id.clone(), i.to_string())>{pc.data[i].user.clone()}</AppAnchor></td>
+                                        <td data-th="Setor">{pc.data[i].setor.clone()}</td>
+                                        <td data-th="ID">{pc.data[i].id.clone()}</td>
+                                        <td data-th="CPU">{pc.data[i].cpu.clone().replace("_", " ")}</td>
+                                        <td data-th="HDD">{pc.data[i].hdd.clone().replace("_", " ")}</td>
+                                        // </AppAnchor>
+                                </tr>
                             })
                         }
                    }
                    let number = pc.data.clone().len();
+                   let mut content = html!{};
+                   if self.payload != String::default()
+                   {
+                       content = html!{
+                           <div class="level-item_01">
+                            <table class="rwd-table">
+                                <tr>
+                                    <th style="background: #dae2f0;">{"Nome"}</th>
+                                    <th style="background: #dae2f0;">{"Setor"}</th>
+                                    <th style="background: #dae2f0;">{"ID"}</th>
+                                    <th style="background: #dae2f0;">{"CPU"}</th>
+                                    <th style="background: #dae2f0;">{"HDD"}</th>
+                                </tr>
+                                {for cards.clone()}
+                            </table>
+                        </div>
+                       }
+                   }
                 //    number = number as f64;
                 html! {
                     <>
@@ -208,9 +189,7 @@ impl Home {
                                 <label for="radio-2"></label>
                             </div>
                         </div>
-                        <ol class="gradient-list con-cards" style="margin-right: 30px;">
-                            {for cards.clone()}
-                        </ol>
+                        {content}
                         <div class="level-item" style="padding: 80px;">
                         <a href="javascript:void(
                             window.open(
@@ -339,7 +318,7 @@ impl Component for Home {
 
         match msg {
             Button(number) => {
-                caller::write_new_pc(JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), JsValue::from_str("?"), vec![JsValue::from_str("?")].into_boxed_slice(), vec![JsValue::from_str("?")].into_boxed_slice(), JsValue::from_f64(number), JsValue::from_bool(true));
+                caller::write_new_pc(JsValue::from_str("-"), JsValue::from_str("-"), JsValue::from_str("-"), JsValue::from_str("-"), JsValue::from_str("-"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("-"), JsValue::from_str("-"), JsValue::from_str("-"), JsValue::from_str("-"), JsValue::from_str("-"), vec![JsValue::from_str("-")].into_boxed_slice(), vec![JsValue::from_str("-")].into_boxed_slice(), JsValue::from_f64(number), JsValue::from_bool(true));
                 // caller::write_new_pc(JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str(Box::leak(self.debugged_payload.clone().into_boxed_str())), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), JsValue::from_str("test"), vec![JsValue::from_str("test")].into_boxed_slice(), vec![JsValue::from_str("test")].into_boxed_slice(), JsValue::from_f64(number));
                 let word = self.debugged_payload.clone();
                 let callback = self.link.callback(move |_msg: Msg| Msg::Payload(word.clone()));
