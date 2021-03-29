@@ -10,7 +10,7 @@ use wasm_bindgen::{JsValue, prelude::*};
 
 use crate::{
     switch::{AppAnchor, AppRoute},
-    components::{pc_info, info_hd, info_cpu, info_marcas},
+    components::{pc_info, info_hd, info_cpu, info_marcas, open_fetch},
     js::caller
 };
 
@@ -99,28 +99,19 @@ impl Pc
                             //             tamMonitor=pc.tamMonitor.clone()
                             //             ram=pc.ram.clone()
                             //             status=pc.status.clone()/>
-                            <div class="column" style="padding-top: 100px">
-                                <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
-                                    <info_marcas::LoadInfo marca=pc.marca.clone()/>
-                                    <h1 style="padding-top: 10px;
-                                                color: #cdd5ea;
-                                                font-size: 210%;
-                                                font-weight: 600;">{pc.id.clone()}</h1>
-                                </div>
-                            </div>
                                 <div class="column">
-                                    <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                    <div class="level-item_01" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
                                         <info_hd::LoadInfo hdd=pc.hdd.clone()/>
                                         <info_cpu::LoadInfo cpu=pc.cpu.clone()/>
                                     </div>
                                 </div>
                             <div class="column">
-                                <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                <div class="level-item_01" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
                                     <div class="box_00">
                                         <div style="padding-left: 30px">
                                             <h1 style="font-size: 250%; font-weight: 600; padding-left: 20px">{"Sistema Operacional"}</h1>
                                             <div style="padding-left: 10px">
-                                                <div class="level-item" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                                <div class="level-item_01" style="padding-top: 100px; padding-bottom: 40px; padding: 20px; display: flex;">
                                                     <div style="margin-right: 200px;">
                                                         <h1><strong>{"Versão: "}</strong>{pc.os.clone()}</h1>
                                                         <h1><strong>{"Status: "}</strong>{pc.status.clone()}</h1>
@@ -140,6 +131,15 @@ impl Pc
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                             <div class="column" style="padding-top: 100px">
+                                <div class="level-item_01" style="padding-top: 100px; padding-bottom: 40px; padding: 20px;">
+                                    <info_marcas::LoadInfo marca=pc.marca.clone()/>
+                                    <h1 style="padding-top: 10px;
+                                                color: #cdd5ea;
+                                                font-size: 210%;
+                                                font-weight: 600;">{pc.id.clone()}</h1>
                                 </div>
                             </div>
                         </>
@@ -206,7 +206,7 @@ impl Pc
                         )
                         ">
                         </a>
-                    <div class="segmented-control" style="position: absolute; left: 10%; top: 15%; background: #e4ebf5;">
+                    <div class="segmented-control" style="position: absolute; left: 28%;top: -10%; background: #e4ebf5;">
                     <input type="radio" name="radio2" value="3" id="tab-1" onclick=self.link.callback(move |_| Msg::Info(0)) checked=self.option01/>
                     <label for="tab-1" class= "segmented-control__1">
                         <p style="color:#4A4A4A;">{"Info"}</p></label>
@@ -377,7 +377,7 @@ impl Component for Pc {
                                 /* left: 40%; */
                                 top: 20%;">{self.export_setor()}</h4>
                 </div>
-                <div class="container" style="transform: scale(0.8);">
+                <div class="container scale">
                 <div class="columns is-desktop">
                     {self.view_html()}
                 </div>
